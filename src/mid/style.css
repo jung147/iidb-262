@@ -1,0 +1,176 @@
+/* 기본 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e8e8e8;
+  color: #111;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+}
+
+/* 포스터 전체 */
+.poster {
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 48px;
+  background-color: #f5f3ed;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  column-gap: 56px;
+  row-gap: 48px;
+}
+
+/* 타이틀 */
+.title-area {
+  align-self: start;
+}
+
+.main-title {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-size: clamp(64px, 9vw, 150px);
+  line-height: 0.78;
+  letter-spacing: -0.075em;
+  transform: scaleY(1.4);
+  transform-origin: top left;
+  margin-bottom: 60px;
+}
+
+.main-title span {
+  display: block;
+}
+
+/* 선언문 */
+.manifesto {
+  min-width: 0;
+}
+.manifesto-text {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 32px;
+  row-gap: 0;
+}
+.manifesto-text p {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.45;
+  margin-bottom: 22px;
+}
+
+/* 서명자 목록 */
+.signatories {
+  grid-column: 1 / -1;
+  border-top: 1px solid #111;
+  padding-top: 18px;
+}
+
+.signatories summary {
+  display: none;
+}
+
+.signatory-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px 20px;
+
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* 하단 */
+.footer {
+  grid-column: 1 / -1;
+  border-top: 1px solid #111;
+  padding-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .poster {
+    grid-template-columns: 1fr;
+    padding: 40px;
+    row-gap: 36px;
+  }
+
+  .main-title {
+    font-size: clamp(72px, 13vw, 130px);
+    margin-bottom: 60px;
+  }
+
+  .manifesto-text p {
+    font-size: 16px;
+    margin-top: 30px;
+  }
+
+  .signatory-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* 모바일 */
+@media (max-width: 768px) {
+  .poster {
+    padding: 24px 20px;
+    row-gap: 32px;
+  }
+
+  .main-title {
+    font-size: clamp(58px, 17vw, 100px);
+    line-height: 0.82;
+  }
+  .manifesto-text {
+    grid-template-columns: 1fr;
+  }
+  .manifesto-text p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  /* 모바일에서만 접기/펼치기 */
+  .signatories summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .signatories summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .toggle-icon::before {
+    content: "+";
+  }
+
+  .signatories[open] .toggle-icon::before {
+    content: "−";
+  }
+
+  .signatory-list {
+    display: none;
+  }
+
+  .signatories[open] > .signatory-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 18px;
+    font-size: 14px;
+  }
+}
